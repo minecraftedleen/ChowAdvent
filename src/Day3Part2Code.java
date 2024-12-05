@@ -9,17 +9,20 @@ public class Day3Part2Code {
     public static void main(String[] args) {
         ArrayList<String> allMatches = new ArrayList<String>();
         String oldString = getFileData("src/Day3Input");
-        String searchString = getFileData("src/Day3Input");;
+        String searchString = "";
         String regex = "mul\\([0-9]*,[0-9]*\\)";
         boolean searchMode = true;
         int sum = 0;
 
         for (int i = 0; i < oldString.length() - 7; i++) {
             if (searchMode && oldString.substring(i, i + 7).equals("don't()")) {
-                System.out.println("check");
+                searchMode=false;
             }
-            if (searchMode && oldString.substring(i, i + 4).equals("do()")) {
-                System.out.println("check2");
+            if (!searchMode && oldString.substring(i, i + 4).equals("do()")) {
+                searchMode=true;
+            }
+            if (searchMode) {
+                searchString+=oldString.substring(i,i+1);
             }
         }
 
