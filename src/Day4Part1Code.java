@@ -61,6 +61,19 @@ public class Day4Part1Code {
                 }
             }
         }
+        for(int i=0;i<grid.length - 3;i++){
+            for(int j=grid[0].length-1;j>2;j--){
+                String checkString = "";
+                int inc=0;
+                for(int k=j;k>j-4;k--){
+                    checkString+=grid[i+inc][k];
+                    inc++;
+                }
+                if(checkString.equals("XMAS") || checkString.equals("SAMX")){
+                    counter++;
+                }
+            }
+        }
         System.out.println(counter);
 
         // "grid" represents a 2D array of Strings built from the input file
