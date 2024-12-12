@@ -37,7 +37,16 @@ public class Day6Part1Code{
         System.out.println(startRow);
         System.out.println(startCol);
         moveUp(startRow,startCol);
-        System.out.println(counter);
+        for(String[] test : grid){
+            for(String testa : test){
+                System.out.print(testa);
+                if(testa.equals("X")){
+                    counter++;
+                }
+            }
+            System.out.println();
+        }
+        System.out.println(counter + 1);
 
         // "grid" represents a 2D array of Strings built from the input file
     }
@@ -62,11 +71,11 @@ public class Day6Part1Code{
     public static void moveUp(int row, int col){
         if(row-1>=0){
             if(grid[row-1][col].equals("#")){
-                counter++;
-                moveRight(row-1,col);
+                moveRight(row,col);
             } else {
                 moveUp(row-1,col);
             }
+            grid[row][col] = "X";
 
         }
     }
@@ -74,11 +83,11 @@ public class Day6Part1Code{
     public static void moveRight(int row, int col){
         if(col+1<grid[row].length){
             if(grid[row][col+1].equals("#")){
-                counter++;
-                moveDown(row,col+1);
+                moveDown(row,col);
             } else {
                 moveRight(row,col+1);
             }
+            grid[row][col] = "X";
 
         }
     }
@@ -86,11 +95,11 @@ public class Day6Part1Code{
     public static void moveDown(int row, int col){
         if(row+1<grid.length){
             if(grid[row+1][col].equals("#")){
-                counter++;
-                moveLeft(row+1,col);
+                moveLeft(row,col);
             } else {
                 moveDown(row+1,col);
             }
+            grid[row][col] = "X";
 
         }
     }
@@ -98,11 +107,11 @@ public class Day6Part1Code{
     public static void moveLeft(int row, int col){
         if(col-1>=0){
             if(grid[row][col-1].equals("#")){
-                counter++;
-                moveUp(row,col-1);
+                moveUp(row,col);
             } else {
                 moveLeft(row,col-1);
             }
+            grid[row][col] = "X";
 
         }
     }
