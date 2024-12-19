@@ -26,11 +26,23 @@ public class Day5Part1Code {
             }
         }
         for(int i=0;i<pageLines.size();i++){
-            for(int j=0;j<pageLines.get(i).length;j++){
-                System.out.print(pageLines.get(i)[j] + " ");
+            boolean checker = false;
+            for(int j=0;j<pageLines.get(i).length-1;j++){
+                for(int k=j+1;k<pageLines.get(i).length;k++){
+                    for(int a=0; a<directions.size();a+=2){
+                        if ((directions.get(a)==pageLines.get(i)[j] && directions.get(a+1)==pageLines.get(i)[k])){
+                            checker = true;
+                        }
+                    }
+                }
+            }
+            if(checker){
+                correct.add(i);
             }
 
         }
+
+        System.out.println(correct.size());
 
         // you now have an ArrayList of Strings for each number in the file
         // do Advent 2020 day 1!
